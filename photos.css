@@ -1,0 +1,66 @@
+
+body {
+  background: black;
+}
+
+.fullscreen {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.activity-bottom {
+  bottom: 45px;
+  position: absolute;
+  width: 100%;
+}
+
+.activity-spinner {
+  height: 102px;
+  margin: 0 auto;
+  width: 102px;
+}
+
+.activity-spinner-inner {
+  -webkit-animation: rotate 1s infinite linear;
+  background-image: url('activity_spinner.png');
+  background-size: 100%;
+  height: 102px;
+  width: 102px;
+}
+
+.photos-logo {
+  left: 90px;
+  position: fixed;
+  top: 120px;
+}
+
+.chromecast-logo {
+  bottom: 104px;
+  left: 90px;
+  position: fixed;
+}
+
+.splash-text {
+  bottom: 240px;
+  text-align: left;
+  color: white;
+  font-family: Arial;
+  font-size: 32px;
+  left: 90px;
+  line-height: 40px;
+  position: fixed;
+  width: 570px;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform:rotate(0deg);
+  }
+  to {
+    -webkit-transform:rotate(360deg);
+  }
+}

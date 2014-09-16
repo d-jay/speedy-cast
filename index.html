@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Speedy Cast</title>
+    <link rel="stylesheet" type="text/css" href="photos.css">
+    <script src="https://www.gstatic.com/eureka/castv2/0014/js/cast_receiver.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="photos.js"></script>
+    <script>
+      $(document).ready(initReceiver);
+    </script>
+  </head>
+  <body>
+    <div id="splash" class="fullscreen" style="display:none;">
+      <img class="fullscreen" src="splash_bgd.jpg" alt="">
+      <img class="photos-logo" src="photos_logo.png" alt="">
+      <img class="chromecast-logo" src="chromecast_logo.png" alt="">
+      <div class="splash-text">
+        Choose a photo on your mobile device or laptop, then view here.
+      </div>
+    </div>
+    <div id="image-canvas" class="fullscreen" style="display:none;"></div>
+    <img id="image-prototype" class="fullscreen" style="display: none;" src="" alt="">
+    <video id="video-player" class="fullscreen" style="display: none;"></video>
+    <div id="activity" class="fullscreen">
+      <div class="activity-bottom">
+        <div class="activity-spinner">
+          <div class="activity-spinner-inner"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
