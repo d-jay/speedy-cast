@@ -289,7 +289,7 @@ function logError(message) {
   Photos.numPhotosShown = 0;
   Photos.numVideosShown = 0;
 
-  Photos.sessionTiming = null;
+//  Photos.sessionTiming = null;
 
   /**
    * Creates a new image job object needed for the job stack
@@ -306,30 +306,30 @@ function logError(message) {
     this.preload = preload;
     this.result = null;
 
-    this.timing = new window.jstiming.Timer();
-    this.timing.name = CSI_ACTION_IMG + ',' +
-        (preload ? CSI_ACTION_PRECACHE : CSI_ACTION_PHOTO);
+//    this.timing = new window.jstiming.Timer();
+//    this.timing.name = CSI_ACTION_IMG + ',' +
+//        (preload ? CSI_ACTION_PRECACHE : CSI_ACTION_PHOTO);
   }
 
   ImageJob.prototype = {
     markRequestStart: function() {
       // Time between receiving the request from sender and actually sending the
       // request to fife.
-      this.timing.tick(CSI_VARIABLE_IMG_REQUEST);
+//      this.timing.tick(CSI_VARIABLE_IMG_REQUEST);
     },
 
     markSuccess: function() {
       this.result = 'success';
-      this.timing.tick(CSI_VARIABLE_IMG_LOADED, CSI_VARIABLE_IMG_REQUEST);
-      window.jstiming.report(this.timing);
-      this.timing = null;
+//      this.timing.tick(CSI_VARIABLE_IMG_LOADED, CSI_VARIABLE_IMG_REQUEST);
+//      window.jstiming.report(this.timing);
+//      this.timing = null;
     },
 
     markFailure: function() {
       this.result = 'HTTPRequestError';
-      this.timing.tick(CSI_VARIABLE_IMG_FAILED, CSI_VARIABLE_IMG_REQUEST);
-      window.jstiming.report(this.timing);
-      this.timing = null;
+//      this.timing.tick(CSI_VARIABLE_IMG_FAILED, CSI_VARIABLE_IMG_REQUEST);
+//      window.jstiming.report(this.timing);
+//      this.timing = null;
     }
   };
 
@@ -365,27 +365,27 @@ function logError(message) {
       // Assign an id to this sender.
       event.target.senderId = Photos.senderIdCounter;
       Photos.senderIdCounter += 1;
-      Photos.sessionTiming = new window.jstiming.Timer();
-      Photos.sessionTiming.name = CSI_ACTION_SESSION;
-      Photos.sessionTiming.tick(CSI_VARIABLE_SESSION_START);
+//      Photos.sessionTiming = new window.jstiming.Timer();
+//      Photos.sessionTiming.name = CSI_ACTION_SESSION;
+//      Photos.sessionTiming.tick(CSI_VARIABLE_SESSION_START);
     },
 
     /**
      * Handle a sender disconnected event.
      */
     onSenderDisconnected: function(event) {
-      if (Photos.sessionTiming) {
-        Photos.sessionTiming.tick(CSI_VARIABLE_SESSION_LENGTH);
-        var artificialTick = function(name, value) {
-          var dummyTick = '_' + name;
-          Photos.sessionTiming.tick(dummyTick, undefined, 0);
-          Photos.sessionTiming.tick(name, dummyTick, value);
-        };
-        artificialTick(CSI_VARIABLE_NUM_PHOTOS, Photos.numPhotosShown);
-        artificialTick(CSI_VARIABLE_NUM_VIDEOS, Photos.numVideosShown);
-        window.jstiming.report(Photos.sessionTiming);
-        Photos.sessionTiming = null;
-      }
+//      if (Photos.sessionTiming) {
+//        Photos.sessionTiming.tick(CSI_VARIABLE_SESSION_LENGTH);
+//        var artificialTick = function(name, value) {
+//          var dummyTick = '_' + name;
+//          Photos.sessionTiming.tick(dummyTick, undefined, 0);
+//          Photos.sessionTiming.tick(name, dummyTick, value);
+//        };
+//        artificialTick(CSI_VARIABLE_NUM_PHOTOS, Photos.numPhotosShown);
+//        artificialTick(CSI_VARIABLE_NUM_VIDEOS, Photos.numVideosShown);
+//        window.jstiming.report(Photos.sessionTiming);
+//        Photos.sessionTiming = null;
+//      }
       if (this.castReceiverManager.getSenders().length == 0) {
         window.setTimeout(function() {
           // Allowing CSI beacon to get through.
@@ -792,14 +792,15 @@ function logError(message) {
       if (parts.length < 2) {
         return false;
       }
+      return true;
 
-      var domain = parts.slice(-2).join('.');
-      switch (domain) {
-//        case 'github.com':
-//          return true;
-        default:
-          return false;
-      }
+//      var domain = parts.slice(-2).join('.');
+//      switch (domain) {
+////        case 'github.com':
+////          return true;
+//        default:
+//          return false;
+//      }
     },
 
     /**
